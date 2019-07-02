@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TLib.Windows;
+using Newtonsoft.Json;
 namespace AutoMc
 {
     /// <summary>
@@ -25,6 +26,9 @@ namespace AutoMc
         public MainWindow()
         {
             InitializeComponent();
+            KeyAction keyAction = new KeyAction(ModifierKeys.Alt, System.Windows.Forms.Keys.P, this,"",new List<Key>(),new List<MouseButton>());
+            string json = JsonConvert.SerializeObject(keyAction);
+            Console.WriteLine(json);
         }
         [DllImport("user32.dll")]
         public static extern int SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
@@ -87,13 +91,9 @@ namespace AutoMc
             //MouseSimulation.Down(MouseButton.Left);
             //KeyboardSimulation.Press(Key.W);
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CboIsTopMost_Click(object sender, RoutedEventArgs e)
         {
-            //SendMessage(htextbox, ControlDLL.WM_LBUTTONDOWN, IntPtr.Zero, null);
-            //IntPtr intPtr = (IntPtr)int.Parse(TbIntPtr.Text, System.Globalization.NumberStyles.HexNumber);
-            PostMessage(Handle, 0x0100, 0x57, 1);
-            PostMessage(Handle, 0x201, 0, 1);
+            Topmost = (bool)CboIsTopMost.IsChecked;
         }
     }
 }

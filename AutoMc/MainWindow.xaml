@@ -11,6 +11,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
+        <CheckBox Name="CboIsTopMost" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="置顶" Margin="10" Click="CboIsTopMost_Click"></CheckBox>
         <TextBox Margin="10" BorderThickness="3" Grid.Row="1"></TextBox>
 
     </Grid>
